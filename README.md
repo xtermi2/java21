@@ -53,7 +53,10 @@
     - Virtual threads created directly with the Thread.Builder API (as opposed to those created through `Executors.newVirtualThreadPerTaskExecutor()`) are now also, by default, monitored throughout their lifetime and observable via the new thread dump described in the Observing virtual threads section.
   - see example `VirtualThreads.java`
 - [JEP 445: Unnamed Classes and Instance Main Methods (Preview)](https://openjdk.org/jeps/445)
-    - TODO
+    - Evolve the Java language so that students can write their first programs without needing to understand language features designed for large programs. Far from using a separate dialect of Java, students can write streamlined declarations for single-class programs and then seamlessly expand their programs to use more advanced features as their skills grow.
+    - First, we enhance the protocol by which Java programs are launched to allow instance main methods. Such methods are not static, need not be public, and need not have a String[] parameter.
+    - Second, we introduce unnamed classes to make the class declaration implicit
+    - see example `UnnamedClasses.java`
 - [JEP 446: Scoped Values (Preview)](https://openjdk.org/jeps/446)
     - TODO
 - [JEP 448: Vector API (Sixth Incubator)](https://openjdk.org/jeps/448)

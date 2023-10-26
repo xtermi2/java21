@@ -83,7 +83,9 @@
       WARNING: Dynamic loading of agents will be disallowed by default in a future release
       ```
 - [JEP 452: Key Encapsulation Mechanism API](https://openjdk.org/jeps/452)
-    - TODO
+    - Introduce an API for key encapsulation mechanisms (KEMs), an encryption technique for securing symmetric keys using public key cryptography.
+    - KEMs will be an important tool for defending against quantum attacks. None of the existing cryptographic APIs in the Java Platform is capable of representing KEMs in a natural way.
+    - see example in `KemReceiver.java` and `KemSender.java`
 - [JEP 453: Structured Concurrency (Preview)](https://openjdk.org/jeps/453)
     - TODO
 

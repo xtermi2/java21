@@ -47,7 +47,11 @@
     - see example `RecordPatternMatching.java` and `SwitchPatternMatching.java`
 
 - [JEP 444: Virtual Threads](https://openjdk.org/jeps/444)
-  - TODO
+  - Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications. 
+  - Minor changes since second preview:
+    - Virtual threads now always support thread-local variables. It is no longer possible, as it was in the preview releases, to create virtual threads that cannot have thread-local variables. Guaranteed support for thread-local variables ensures that many more existing libraries can be used unchanged with virtual threads, and helps with the migration of task-oriented code to use virtual threads.
+    - Virtual threads created directly with the Thread.Builder API (as opposed to those created through `Executors.newVirtualThreadPerTaskExecutor()`) are now also, by default, monitored throughout their lifetime and observable via the new thread dump described in the Observing virtual threads section.
+  - see example `VirtualThreads.java`
 - [JEP 445: Unnamed Classes and Instance Main Methods (Preview)](https://openjdk.org/jeps/445)
     - TODO
 - [JEP 446: Scoped Values (Preview)](https://openjdk.org/jeps/446)

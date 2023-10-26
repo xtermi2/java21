@@ -36,9 +36,9 @@
         - Centralized the management of the lifetimes of native segments in the Arena interface;
         - Enhanced layout paths with a new element to dereference address layouts;
         - Provided a linker option to optimize calls to functions that are short-lived and will not upcall to Java (
-          e.g., clock_gettime);
-        - Provided a fallback native linker implementation, based on libffi, to facilitate porting; and
-        - Removed the VaList class.
+          e.g., `clock_gettime`);
+        - Provided a fallback native linker implementation, based on `libffi`, to facilitate porting; and
+        - Removed the `VaList` class.
     - see example `ForeignFunctionAndMemoryAPI.java`
 - [JEP 443: Unnamed Patterns and Variables (Preview)](https://openjdk.org/jeps/443)
     - Enhance the Java language with unnamed patterns, which match a record component without stating the component's
@@ -47,14 +47,24 @@
     - see example `RecordPatternMatching.java` and `SwitchPatternMatching.java`
 
 - [JEP 444: Virtual Threads](https://openjdk.org/jeps/444)
-  - Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications. 
-  - Minor changes since second preview:
-    - Virtual threads now always support thread-local variables. It is no longer possible, as it was in the preview releases, to create virtual threads that cannot have thread-local variables. Guaranteed support for thread-local variables ensures that many more existing libraries can be used unchanged with virtual threads, and helps with the migration of task-oriented code to use virtual threads.
-    - Virtual threads created directly with the Thread.Builder API (as opposed to those created through `Executors.newVirtualThreadPerTaskExecutor()`) are now also, by default, monitored throughout their lifetime and observable via the new thread dump described in the Observing virtual threads section.
-  - see example `VirtualThreads.java`
+    - Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing
+      high-throughput concurrent applications.
+    - Minor changes since second preview:
+        - Virtual threads now always support thread-local variables. It is no longer possible, as it was in the preview
+          releases, to create virtual threads that cannot have thread-local variables. Guaranteed support for
+          thread-local variables ensures that many more existing libraries can be used unchanged with virtual threads,
+          and helps with the migration of task-oriented code to use virtual threads.
+        - Virtual threads created directly with the Thread.Builder API (as opposed to those created
+          through `Executors.newVirtualThreadPerTaskExecutor()`) are now also, by default, monitored throughout their
+          lifetime and observable via the new thread dump described in the Observing virtual threads section.
+    - see example `VirtualThreads.java`
 - [JEP 445: Unnamed Classes and Instance Main Methods (Preview)](https://openjdk.org/jeps/445)
-    - Evolve the Java language so that students can write their first programs without needing to understand language features designed for large programs. Far from using a separate dialect of Java, students can write streamlined declarations for single-class programs and then seamlessly expand their programs to use more advanced features as their skills grow.
-    - First, we enhance the protocol by which Java programs are launched to allow instance main methods. Such methods are not static, need not be public, and need not have a String[] parameter.
+    - Evolve the Java language so that students can write their first programs without needing to understand language
+      features designed for large programs. Far from using a separate dialect of Java, students can write streamlined
+      declarations for single-class programs and then seamlessly expand their programs to use more advanced features as
+      their skills grow.
+    - First, we enhance the protocol by which Java programs are launched to allow instance main methods. Such methods
+      are not static, need not be public, and need not have a String[] parameter.
     - Second, we introduce unnamed classes to make the class declaration implicit
     - see example `UnnamedClasses.java`
 - [JEP 446: Scoped Values (Preview)](https://openjdk.org/jeps/446)
@@ -62,19 +72,28 @@
       especially when using large numbers of virtual threads.
     - Unlike a thread-local variable, a scoped value is written once and is then immutable, and is available only for a
       bounded period during execution of the thread.
-    - In effect, a scoped value is an implicit method parameter. It is "as if" every method in a sequence of calls has an additional, invisible, parameter. None of the methods declare this parameter and only the methods that have access to the scoped value object can access its value (the data). Scoped values make it possible to pass data securely from a caller to a faraway callee through a sequence of intermediate methods that do not declare a parameter for the data and have no access to the data.
+    - In effect, a scoped value is an implicit method parameter. It is "as if" every method in a sequence of calls has
+      an additional, invisible, parameter. None of the methods declare this parameter and only the methods that have
+      access to the scoped value object can access its value (the data). Scoped values make it possible to pass data
+      securely from a caller to a faraway callee through a sequence of intermediate methods that do not declare a
+      parameter for the data and have no access to the data.
     - see example `ScopedValueServer.java`
 - [JEP 448: Vector API (Sixth Incubator)](https://openjdk.org/jeps/448)
     - Introduce an API to express vector computations that reliably compile at runtime to optimal vector instructions on
       supported CPU architectures, thus achieving performance superior to equivalent scalar computations.
     - update to 5th incubator:
-      - Add the exclusive or (xor) operation to vector masks.
-      - Improve the performance of vector shuffles, especially when used to rearrange the elements of a vector and when converting between vectors.
+        - Add the exclusive or (xor) operation to vector masks.
+        - Improve the performance of vector shuffles, especially when used to rearrange the elements of a vector and
+          when converting between vectors.
 - [JEP 449: Deprecate the Windows 32-bit x86 Port for Removal](https://openjdk.org/jeps/449)
     - Deprecate the Windows 32-bit x86 port, with the intent to remove it in a future release.
-    - Update the build system to issue an error message when an attempt is made to configure a build for Windows 32-bit x86 (x86-32). The error message will be suppressible via a new configuration option (`--enable-deprecated-ports=yes`).
+    - Update the build system to issue an error message when an attempt is made to configure a build for Windows 32-bit
+      x86 (x86-32). The error message will be suppressible via a new configuration
+      option (`--enable-deprecated-ports=yes`).
 - [JEP 451: Prepare to Disallow the Dynamic Loading of Agents](https://openjdk.org/jeps/451)
-    - Issue warnings when agents are loaded dynamically into a running JVM. These warnings aim to prepare users for a future release which disallows the dynamic loading of agents by default in order to improve integrity by default. Serviceability tools that load agents at startup will not cause warnings to be issued in any release.
+    - Issue warnings when agents are loaded dynamically into a running JVM. These warnings aim to prepare users for a
+      future release which disallows the dynamic loading of agents by default in order to improve integrity by default.
+      Serviceability tools that load agents at startup will not cause warnings to be issued in any release.
     - example:
       ```
       WARNING: A {Java,JVM TI} agent has been loaded dynamically (file:/u/bob/agent.jar)
@@ -83,11 +102,19 @@
       WARNING: Dynamic loading of agents will be disallowed by default in a future release
       ```
 - [JEP 452: Key Encapsulation Mechanism API](https://openjdk.org/jeps/452)
-    - Introduce an API for key encapsulation mechanisms (KEMs), an encryption technique for securing symmetric keys using public key cryptography.
-    - KEMs will be an important tool for defending against quantum attacks. None of the existing cryptographic APIs in the Java Platform is capable of representing KEMs in a natural way.
+    - Introduce an API for key encapsulation mechanisms (KEMs), an encryption technique for securing symmetric keys
+      using public key cryptography.
+    - KEMs will be an important tool for defending against quantum attacks. None of the existing cryptographic APIs in
+      the Java Platform is capable of representing KEMs in a natural way.
     - see example in `KemReceiver.java` and `KemSender.java`
 - [JEP 453: Structured Concurrency (Preview)](https://openjdk.org/jeps/453)
-    - TODO
+    - Simplify concurrent programming by introducing an API for structured concurrency. Structured concurrency treats
+      groups of related tasks running in different threads as a single unit of work, thereby streamlining error handling
+      and cancellation, improving reliability, and enhancing observability.
+    - changes since last incubator in JDK 20:
+        - The only significant change is that the `StructuredTaskScope::fork(...)` method returns a `Subtask` rather
+          than a `Future`,
+    - see example `StructuredConcurrency.java`
 
 ----------------------
 

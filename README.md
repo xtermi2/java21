@@ -74,7 +74,14 @@
     - Deprecate the Windows 32-bit x86 port, with the intent to remove it in a future release.
     - Update the build system to issue an error message when an attempt is made to configure a build for Windows 32-bit x86 (x86-32). The error message will be suppressible via a new configuration option (`--enable-deprecated-ports=yes`).
 - [JEP 451: Prepare to Disallow the Dynamic Loading of Agents](https://openjdk.org/jeps/451)
-    - TODO
+    - Issue warnings when agents are loaded dynamically into a running JVM. These warnings aim to prepare users for a future release which disallows the dynamic loading of agents by default in order to improve integrity by default. Serviceability tools that load agents at startup will not cause warnings to be issued in any release.
+    - example:
+      ```
+      WARNING: A {Java,JVM TI} agent has been loaded dynamically (file:/u/bob/agent.jar)
+      WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+      WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+      WARNING: Dynamic loading of agents will be disallowed by default in a future release
+      ```
 - [JEP 452: Key Encapsulation Mechanism API](https://openjdk.org/jeps/452)
     - TODO
 - [JEP 453: Structured Concurrency (Preview)](https://openjdk.org/jeps/453)

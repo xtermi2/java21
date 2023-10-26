@@ -58,7 +58,12 @@
     - Second, we introduce unnamed classes to make the class declaration implicit
     - see example `UnnamedClasses.java`
 - [JEP 446: Scoped Values (Preview)](https://openjdk.org/jeps/446)
-    - TODO
+    - Enable the sharing of immutable data within and across threads. They are preferred to thread-local variables,
+      especially when using large numbers of virtual threads.
+    - Unlike a thread-local variable, a scoped value is written once and is then immutable, and is available only for a
+      bounded period during execution of the thread.
+    - In effect, a scoped value is an implicit method parameter. It is "as if" every method in a sequence of calls has an additional, invisible, parameter. None of the methods declare this parameter and only the methods that have access to the scoped value object can access its value (the data). Scoped values make it possible to pass data securely from a caller to a faraway callee through a sequence of intermediate methods that do not declare a parameter for the data and have no access to the data.
+    - see example `ScopedValueServer.java`
 - [JEP 448: Vector API (Sixth Incubator)](https://openjdk.org/jeps/448)
     - TODO
 - [JEP 449: Deprecate the Windows 32-bit x86 Port for Removal](https://openjdk.org/jeps/449)

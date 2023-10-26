@@ -71,7 +71,8 @@
       - Add the exclusive or (xor) operation to vector masks.
       - Improve the performance of vector shuffles, especially when used to rearrange the elements of a vector and when converting between vectors.
 - [JEP 449: Deprecate the Windows 32-bit x86 Port for Removal](https://openjdk.org/jeps/449)
-    - TODO
+    - Deprecate the Windows 32-bit x86 port, with the intent to remove it in a future release.
+    - Update the build system to issue an error message when an attempt is made to configure a build for Windows 32-bit x86 (x86-32). The error message will be suppressible via a new configuration option (`--enable-deprecated-ports=yes`).
 - [JEP 451: Prepare to Disallow the Dynamic Loading of Agents](https://openjdk.org/jeps/451)
     - TODO
 - [JEP 452: Key Encapsulation Mechanism API](https://openjdk.org/jeps/452)

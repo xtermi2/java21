@@ -65,7 +65,11 @@
     - In effect, a scoped value is an implicit method parameter. It is "as if" every method in a sequence of calls has an additional, invisible, parameter. None of the methods declare this parameter and only the methods that have access to the scoped value object can access its value (the data). Scoped values make it possible to pass data securely from a caller to a faraway callee through a sequence of intermediate methods that do not declare a parameter for the data and have no access to the data.
     - see example `ScopedValueServer.java`
 - [JEP 448: Vector API (Sixth Incubator)](https://openjdk.org/jeps/448)
-    - TODO
+    - Introduce an API to express vector computations that reliably compile at runtime to optimal vector instructions on
+      supported CPU architectures, thus achieving performance superior to equivalent scalar computations.
+    - update to 5th incubator:
+      - Add the exclusive or (xor) operation to vector masks.
+      - Improve the performance of vector shuffles, especially when used to rearrange the elements of a vector and when converting between vectors.
 - [JEP 449: Deprecate the Windows 32-bit x86 Port for Removal](https://openjdk.org/jeps/449)
     - TODO
 - [JEP 451: Prepare to Disallow the Dynamic Loading of Agents](https://openjdk.org/jeps/451)
